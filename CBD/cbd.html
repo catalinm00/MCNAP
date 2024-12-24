@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Estrategias y Herramientas de Computación Big Data en la Nube (CBD)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="support/style.css" type="text/css" />
+	<script src="support/jquery-1.8.3.min.js"></script>
+
+
+	<script type="text/javascript">
+	(function ($) {
+	    $.fn.showHide = function (options) {
+
+	    //default vars for the plugin
+	        var defaults = {
+	            speed: 1000,
+	            easing: '',
+	            changeText: 0,
+	            showText: 'Show',
+	            hideText: 'Hide'
+
+	        };
+	        var options = $.extend(defaults, options);
+
+	        $(this).click(function () {
+	// optionally add the class .toggleDiv to each div you want to automatically close
+	    //                  $('.toggleDiv').slideUp(options.speed, options.easing);
+	             // this var stores which button you've clicked
+	             var toggleClick = $(this);
+	             // this reads the rel attribute of the button to determine which div id to toggle
+	             var toggleDiv = $(this).attr('rel');
+	             // here we toggle show/hide the correct div at the right speed and using which easing effect
+	             $(toggleDiv).slideToggle(options.speed, options.easing, function() {
+	             // this only fires once the animation is completed
+	             if(options.changeText==1){
+	             $(toggleDiv).is(":visible") ? toggleClick.text(options.hideText) : toggleClick.text(options.showText);
+	             }
+	              });
+
+	          return false;
+
+	        });
+
+	    };
+	})(jQuery);
+	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+	   $('.show_hide').showHide({
+	        speed: 1000,  // speed you want the toggle to happen
+	        easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+	        changeText: 0, // if you dont want the button text to change, set this to 0
+	        showText: 'View',// the button text to show when a div is closed
+	        hideText: 'Close' // the button text to show when a div is open
+
+	    });
+
+	});
+
+	</script>
+</head>
+
+<body>
+
+	<div id="container">
+		<div id="header">
+
+			<h1 id="top">
+				Estrategias y Herramientas de Computación Big Data en la Nube (CBD)</a> <br> <small>Máster Universitario en Computación en la Nube y de Altas Prestaciones (MUCNAP)</small>
+			</h1>
+			<h4> <a href="http://www.grycap.upv.es/gmolto"> &copy; Germán Moltó</a> - <a href="mailto:gmolto@dsic.upv.es">gmolto@dsic.upv.es</a> - <a href="http://www.upv.es">Universitat Politècnica de València</a></h4>
+		</div>
+
+<!--
+		<div id="navigation">
+			<ul>
+				<li><a href="#">Home</a></li>
+			</ul>
+		</div>
+-->
+<div id="content">
+	<div align="right">
+ 		<a href="mailto:gmolto@dsic.upv.es?subject=[IAC]"><img title="Envía tu duda a gmolto@dsic.upv.es" src="support/question-mark.png" width="30px">
+		<a target="_blank" href="https://poliformat.upv.es/portal/site/DOC_33002_2013"><img title="Sitio PoliformaT" src="support/poliformat.png" style="margin-top: -6em;" width="130px"></a>
+	</div>
+<a class="show_hide" href="#" rel="#pres"><h3 id="presentacion"> Presentación de la Asignatura </h3></a>
+<div id="pres" class="toggleDiv" style="display: none;">
+<div class="view">
+<h4> Introducción</h4>
+<p>
+Bienvenido a la asignatura Estrategias y Herramientas de Computación Big Data en la Nube (CBD), del Máster Universitario en Computación en la Nube y de Altas Prestaciones (MUCNAP) de la Universitat Politècnica de València.
+
+Este seminario ofrece a los alumnos experiencia en la utilización de modelos de programación orientados a Cloud. 
+En primer lugar se abordan los modelos de programación orientados a cómputo intensivo y se aborda el despliegue de clusters virtuales elásticos en la nube. 
+A continuación se aborda el modelo MapReduce para el análisis de grandes volúmenes de datos, implementado mediante Apache Hadoop. 
+Posteriormente, se abordan herramientas de nivel más alto para interactuar con un cluster Hadoop (como Apache Hue) y herramientas para consultar datasets mediante lenguaje similar a SQL (Apache Hive).
+También se aborda el funcionamiento de Apache Spark.
+
+</p>
+
+<h4> Profesor</h4>
+<p>
+<img src="support/gmolto_profile_2_small.jpg" width="150px" align="right">
+<p>
+El instructor del curso es <a href="http://www.grycap.upv.es/gmolto">Germán Moltó</a>. Germán es Catedrático de Universidad en el Departamento de Sistemas Informáticos y Computación (<a href="http://www.dsic.upv.es">DSIC</a>) e Investigador en el Instituto de Instrumentación para Imagen Molecular (<a href="http://www.i3m.upv.es">I3M</a>) de la Universitat Politècnica de València (<a target="_blank" href="http://www.upv.es">UPV</a>).
+Su campo de investigación abarca el Cloud Computing y la Computación de Altas Prestaciones, donde ha publicado numerosos <a target="_blank" href="http://www.grycap.upv.es/gmolto/publications.php"> artículos en revistas y en congresos internacionales</a>.
+</p>
+<p>
+Dirige y participa en proyectos de I+D relacionados con Cloud Computing desde 2009 financiados por entidades regionales, nacionales y europeas.
+En el ámbito académico, imparte clases en el Grado en Informática y asignaturas de Cloud Computing en el <a target="_blank" href="http://www.upv.es/titulaciones/MUCPD/">Máster Universitario en Computación en la Nube y de Altas Prestaciones</a> y en el <a href="http://mugi.webs.upv.es"> Máster Oficial Universitario en Gestión de la Información</a>.
+También imparte asignaturas de Cloud Computing para Big Data en el <a href="http://bigdata.inf.upv.es">Master en Big Data Analytics</a> de la UPV.
+Tienes más información en su <a target="_blank" href="http://www.grycap.upv.es/gmolto">web personal</a>.
+</p>
+
+<!--
+<h4> Evaluación </h4>
+<p>
+La evaluación de esta asignatura, tal y como se describe en la guía docente consta de:
+<ul>
+	<li> 20% Examen escrito estructurado con diversas preguntas o ítems en los que el alumno no elabora la respuesta; sólo ha de señalarla o completarla con elementos muy precisos.
+    <li> 60% Desarrollo de un proyecto que puede ir desde trabajos breves y sencillos hasta trabajos amplios y complejos propios de últimos cursos y de tesis doctorales.
+    <li> 20% Conjunto documental elaborado por un estudiante que muestra la tarea realizada durante el curso en una materia determinada.
+</ul>
+</p>
+-->
+<h4> Información relevante para las prácticas</h4>
+<p>
+<ul>
+	<li> <a href="https://grycap-aws.signin.aws.amazon.com/console">Acceso a la AWS Management Console</a>
+	<li> <a href="practicas/cursocloudaws_guia_practicas.pdf"> Guía de prácticas </a>
+</ul>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/mucnap_cbd_presentacion.pdf"> Presentación de la Asignatura </a>
+<li> <a href="teoria/mucnap_cbd_listado_trabajos.pdf"> Listado de Trabajos Propuestos </a>
+</ul>
+</p>
+</div>
+</div>
+
+
+<!--
+	TEMA 1
+-->
+<a class="show_hide" href="#" rel="#m1"><h3 id="modulo1"> Tema 1. Computación Intensiva en la Nube</h3></a>
+<div id="m1" class="toggleDiv" style="display: none;">
+<div class="view">
+<p>
+Este tema se centra en los modelos de programación orientados a cálculo intensivo, específicamente sobre aquellos más relacionados con las tecnologías Cloud. Se introducen algunas herramientas para el despliegue de clusters virtuales en la nube y se realiza una práctica de despliegue de clusters virtuales elásticos sobre Amazon Web Services usando la herramienta AWS ParallelCluster.
+</p>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/cursocloudaws_big_compute.pdf"> Transparencias </a>
+</ul>
+</p>
+<p>
+Boletín de prácticas:
+<ul>
+<li> <a href="practicas/cursocloudaws_practica_ec2_basica_web.pdf"> Práctica de Amazon EC2 </a>	
+	<ul><li> A realizar por aquellos alumnos que NO han cursado previamente la asignatura ICP (Infraestructuras de Cloud Público)</li></ul>
+
+<li> <a href="practicas/cursocloudaws_practica_aws_parallel_cluster.pdf"> Práctica de AWS ParallelCluster </a>
+</ul>
+</p>
+<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+</div>
+</div>
+
+
+<!--
+	TEMA 2
+-->
+<a class="show_hide" href="#" rel="#m2"><h3 id="modulo2"> Tema 2. Procesado de Big Data en la Nube</h3></a>
+<div id="m2" class="toggleDiv" style="display: none;">
+<div class="view">
+<p>
+Este tema aborda el modelo de programación MapReduce para el análisis de conjuntos de datos masivos así como su implementación mediante Apache Hadoop. 
+Se realiza un práctica de uso de Hadoop sobre un cluster dinámicamente desplegado en Amazon Web Services para procesar la información de diversos conjuntos de datos.
+También se aborda Amazon EMR para auto-aprovisionar clusters Hadoop sobre AWS y se utiliza Apache Hue para interactuar con Apache Hadoop de forma gráfica. 
+Finalmente, se utiliza Apache Hive para realizar consultas SQL a datasets almacenados en el sistema de archivos distribuido de Hadoop.
+</p>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/cursocloudaws_big_data.pdf"> Transparencias </a>
+</ul>
+</p>
+
+<p>
+Boletines de prácticas:
+<ul>
+<li> <a href="practicas/cursocloudaws_practica_hadoop_on_premises.pdf"> Práctica de MapReduce con Hadoop</a>
+<li> <a href="practicas/cursocloudaws_practica_amazon_emr_hue_hive.pdf"> Práctica de Hue y Hive con Amazon EMR</a>
+</a>
+</ul>
+</p>
+<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+</div>
+</div>
+
+
+
+<a class="show_hide" href="#" rel="#bib"><h3 id="bibliografia"> Bibliografía</h3></a>
+<div id="bib" class="toggleDiv" style="display: none;">
+<div class="view">
+<h4> Libros </h4>
+<ul>
+    <li> T. White, Hadoop: The Definitive Guide. O’Reilly Media, 2012 </li> 	
+</ul>
+<h4> Artículos Científicos </h4>
+   <li>Armbrust, M., Xin, R.S., Lian, C., Huai, Y., Liu, D., Bradley, J.K., Meng, X., Kaftan, T., Frankliny, M.J., Ghodsi, A., Zaharia, M., 2015. Spark SQL: Relational data processing in spark, in: Proceedings of the ACM SIGMOD International Conference on Management of Data. Association for Computing Machinery, New York, NY, USA, pp. 1383–1394. https://doi.org/10.1145/2723372.2742797</li> 
+<ul>
+	
+</ul>
+<h4> Páginas Web </h4>
+<ul>
+    <li> <a href="http://hadoop.apache.org"> http://hadoop.apache.org</a>
+	<li> <a href="http://www.amazon.com/aws"> http://www.amazon.com/aws </a>
+	<li> <a href="http://aws.amazon.com/whitepapers"> http://aws.amazon.com/whitepapers </a>
+
+
+</div>
+</div>
+
+<div class="center">
+	<a href="http://www.grycap.upv.es"><img src="support/grycap.png" width="150px"></a>
+	<a href="http://www.i3m.upv.es"><img src="support/i3m.png" width="170px"></a>
+	<a href="http://www.upv.es"><img src="support/upv.png" width="190px"></a>
+</div>
+
+<!-- end -->
+</div>
+</body>
+</html>

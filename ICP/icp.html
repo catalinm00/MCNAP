@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Infraestructuras de Cloud Público (ICP)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="support/style.css" type="text/css" />
+	<script src="support/jquery-1.8.3.min.js"></script>
+
+
+	<script type="text/javascript">
+	(function ($) {
+	    $.fn.showHide = function (options) {
+
+	    //default vars for the plugin
+	        var defaults = {
+	            speed: 1000,
+	            easing: '',
+	            changeText: 0,
+	            showText: 'Show',
+	            hideText: 'Hide'
+
+	        };
+	        var options = $.extend(defaults, options);
+
+	        $(this).click(function () {
+	// optionally add the class .toggleDiv to each div you want to automatically close
+	    //                  $('.toggleDiv').slideUp(options.speed, options.easing);
+	             // this var stores which button you've clicked
+	             var toggleClick = $(this);
+	             // this reads the rel attribute of the button to determine which div id to toggle
+	             var toggleDiv = $(this).attr('rel');
+	             // here we toggle show/hide the correct div at the right speed and using which easing effect
+	             $(toggleDiv).slideToggle(options.speed, options.easing, function() {
+	             // this only fires once the animation is completed
+	             if(options.changeText==1){
+	             $(toggleDiv).is(":visible") ? toggleClick.text(options.hideText) : toggleClick.text(options.showText);
+	             }
+	              });
+
+	          return false;
+
+	        });
+
+	    };
+	})(jQuery);
+	</script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+	   $('.show_hide').showHide({
+	        speed: 1000,  // speed you want the toggle to happen
+	        easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+	        changeText: 0, // if you dont want the button text to change, set this to 0
+	        showText: 'View',// the button text to show when a div is closed
+	        hideText: 'Close' // the button text to show when a div is open
+
+	    });
+
+	});
+
+	</script>
+</head>
+
+<body>
+
+	<div id="container">
+		<div id="header">
+
+			<h1 id="top">
+				Infraestructuras de Cloud Público (ICP)</a> <br> <small>Máster Universitario en Computación en la Nube y de Altas Prestaciones (MUCNAP)</small>
+			</h1>
+			<h4> <a href="http://www.grycap.upv.es/gmolto"> &copy; Germán Moltó</a> - <a href="mailto:gmolto@dsic.upv.es">gmolto@dsic.upv.es</a> - <a href="http://www.upv.es">Universitat Politècnica de València</a></h4>
+		</div>
+
+<!--
+		<div id="navigation">
+			<ul>
+				<li><a href="#">Home</a></li>
+			</ul>
+		</div>
+-->
+<div id="content">
+	<div align="right">
+ 		<a href="mailto:gmolto@dsic.upv.es?subject=[IAC]"><img title="Envía tu duda a gmolto@dsic.upv.es" src="support/question-mark.png" width="30px">
+		<a target="_blank" href="https://poliformat.upv.es/portal/site/DOC_33014_2013"><img title="Sitio PoliformaT" src="support/poliformat.png" style="margin-top: -6em;" width="130px"></a>
+	</div>
+<a class="show_hide" href="#" rel="#pres"><h3 id="presentacion"> Presentación de la Asignatura </h3></a>
+<div id="pres" class="toggleDiv" style="display: none;">
+<div class="view">
+<h4> Introducción</h4>
+<p>
+Bienvenido a la asignatura Infraestructuras de Cloud Público (ICP), del Máster Universitario en Computación en la Nube y de Altas Prestaciones (MUCNAP) de la Universitat Politècnica de València.
+
+Este asignatura aborda de forma teórica y práctica todos los conceptos, tecnologías y herramientas necesarias para iniciarte en el uso de infraestructuras Cloud como soporte a la ejecución de aplicaciones.
+Conocerás de primera mano las ventajas que ofrece Cloud Computing y harás prácticas sobre la infraestructura real de Amazon Web Services (AWS), el proveedor líder en Cloud Computing.
+Trabajarás con los principales servicios de AWS para el aprovisionamiento de infraestructura virtual y para la gestión de datos en la nube.
+En definitiva, utilizarás las principales herramientas para el despliegue y uso de infraestructuras avanzadas en Cloud.
+Las clases se imparten mediante una metodología de enseñanza-aprendizaje basada en la lección magistral participativa con el uso de la pregunta como mecanismo para la evocación de conceptos. 
+Los boletines de prácticas incluyen de forma detallada las actividades prácticas a realizar en cada sesión.
+</p>
+
+<h4> Profesor</h4>
+<p>
+<img src="support/gmolto_profile_2_small.jpg" width="150px" align="right">
+<p>
+El instructor del curso es <a href="https://www.grycap.upv.es/gmolto">Germán Moltó</a>. Germán es Catedrático de Universidad en el Departamento de Sistemas Informáticos y Computación (<a href="https://www.dsic.upv.es">DSIC</a>) e Investigador en el Instituto de Instrumentación para Imagen Molecular (<a href="https://www.i3m.upv.es">I3M</a>) de la Universitat Politècnica de València (<a target="_blank" href="https://www.upv.es">UPV</a>).
+Su campo de investigación abarca el Cloud Computing y la Computación de Altas Prestaciones, donde ha publicado numerosos <a target="_blank" href="http://www.grycap.upv.es/gmolto/publications.php"> artículos en revistas y en congresos internacionales</a>.
+</p>
+<p>
+Dirige y participa en proyectos de I+D relacionados con Cloud Computing desde 2009 financiados por entidades regionales, nacionales y europeas.
+En el ámbito académico, imparte clases en el Grado en Informática y asignaturas de Cloud Computing en el <a target="_blank" href="https://www.upv.es/titulaciones/MUCPD/">Máster Universitario en Computación en la Nube y de Altas Prestaciones</a> y en el <a href="https://www.upv.es/titulaciones/MUCC/indexc.html"> Máster Universitario en Ciberseguridad y Ciberinteligencia</a>.
+También imparte asignaturas de Cloud Computing para Big Data en el <a href="https://bigdata.inf.upv.es">Master en Big Data Analytics</a> de la UPV.
+Es el creador del <a href="https://www.grycap.upv.es/cursocloudaws">Curso Online de Cloud Computing con Amazon Web Services (AWS)</a>, formando profesionales en AWS desde 2013.
+Tienes más información en su <a target="_blank" href="https://www.grycap.upv.es/gmolto">web personal</a>.
+</p>
+
+<h4> Información relevante para las prácticas</h4>
+<p>
+<ul>
+	<li> <a href="https://grycap-aws.signin.aws.amazon.com/console">Acceso a la AWS Management Console</a>
+	<li> <a target="_blank"  href="https://cloudtrailtracker.cursocloudaws.net">Acceso a CloudTrail-Tracker</a>
+	<li> <a target="_blank"  href="https://docs.google.com/forms/d/1DFRpafPhJhxBtBIC8yrGlhqzV9XRW6aZvHwAtEDlQB8/viewform"> Encuesta de satisfacción con CloudTrail-Tracker</a>	
+</ul>
+</p>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/mucnap_icp_presentacion.pdf"> Presentación de la Asignatura </a>
+<li> <a href="teoria/mucnap_icp_listado_trabajos.pdf"> Listado de Trabajos Propuestos </a>
+<li> <a href="teoria/mucnap_icp_evaluacion.pdf"> Evaluación y Portafolio </a>
+<li> Actividad para la Competencia Transversal Responsabilidad Social y Medioambiental. </a>
+	<ul>
+		<li>  <a href="https://mit-serc.pubpub.org/pub/the-cloud-is-material/release/1">The Cloud Is Material: On the Environmental Impacts of Computation and Data Storage</a>. Backup: <a href="teoria/The-Cloud-is-Material.pdf"> [PDF en Inglés]</a> <a href="teoria/La-Nube-es-Material.pdf"> [PDF en Español (Traducción automática)]</a></li>
+
+	</ul>
+
+</ul>
+</p>
+</div>
+</div>
+
+
+<!--
+	TEMA 1
+-->
+<a class="show_hide" href="#" rel="#m1"><h3 id="modulo1"> Tema 1. Infraestructuras de Cloud Público</h3></a>
+<div id="m1" class="toggleDiv" style="display: none;">
+<div class="view">
+<p>
+Este módulo permite que conozcas el concepto de Cloud Computing (Computación en Nube), así como los principales antecedentes y tecnologías afines que han propiciado su auge.
+Se abordan las tecnologías, herramientas, proveedores, estándares y paradigmas de computación involucrados en el Cloud.
+Se estudian algunos casos de éxito de la tecnología y se discuten tanto los principales modelos de servicio (IaaS, PaaS y SaaS) como las ventajas/inconvenientes de la externalización del almacenamiento y/o cómputo a un tercer proveedor.
+</p>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/cursocloudaws_intro_cloud.pdf"> Transparencias </a>
+</ul>
+</p>
+<p>
+Vídeo-lecciones disponibles:
+<ul>
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=ffda69f0-021d-11e6-851a-656f7e06a374&autoplay=true"> ¿Qué es Cloud Computing? </a> [8'38'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=ffa2df30-021d-11e6-851a-656f7e06a374&autoplay=true"> Justificación y Antecedentes del Cloud </a> [8'35'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=ff94ae60-021d-11e6-851a-656f7e06a374&autoplay=true"> Características de un Cloud </a> [9'27'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=ffa8d2a0-021d-11e6-851a-656f7e06a374&autoplay=true"> Tecnologías y Principales Proveedores Cloud </a>	[8'36'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=000c9d80-021e-11e6-851a-656f7e06a374&autoplay=true"> Casos de Éxito, Retos y Críticas del Cloud </a> [11'58]
+</ul>
+</p>
+<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+</div>
+</div>
+
+
+<!--
+	TEMA 2
+-->
+<a class="show_hide" href="#" rel="#m2"><h3 id="modulo2"> Tema 2. Introducción a Amazon Web Services (AWS)</h3></a>
+<div id="m2" class="toggleDiv" style="display: none;">
+<div class="view">
+<p>
+Este tema permite que conozcas los principales servicios de AWS para el aprovisionamiento de recursos de cómputo y de almacenamiento bajo demanda mediante un modelo de pago por uso.
+También para el despliegue de bases de datos relacionales y no relacionales (NoSQL) en la nube.
+Esto te permitirá conocer las ventajas/inconvenientes del modelo de servicio en Cloud Infrastructure as a Service (IaaS).
+</p>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/cursocloudaws_intro_aws.pdf"> Transparencias </a>
+</ul>
+</p>
+<p>
+Vídeo-lecciones disponibles:
+<ul>
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=00433de0-021e-11e6-851a-656f7e06a374&autoplay=true"> Introducción a Amazon Web Services (AWS)</a> [12'25'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=00028b60-021e-11e6-851a-656f7e06a374&autoplay=true"> Introducción a Amazon S3</a> [9'24'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=01e729e0-021e-11e6-851a-656f7e06a374&autoplay=true"> El Servicio Amazon EC2</a> [10'29'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=02ee39a0-021e-11e6-851a-656f7e06a374&autoplay=true"> Otros Servicios de Amazon EC2 para Aplicaciones Cloud</a> [7'43'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=030e92e0-021e-11e6-851a-656f7e06a374&autoplay=true"> Auto-Escalado de Aplicaciones Cloud</a> [7'33']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=027a6930-021e-11e6-851a-656f7e06a374&autoplay=true"> Utilizando Amazon Web Services (AWS)</a> [9'42'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=49f5aa90-021e-11e6-851a-656f7e06a374&autoplay=true"> Amazon VPC (Virtual Private Cloud)</a> [11'17'']
+</ul>
+</p>
+<p>
+Guía sobre las prácticas:
+<ul>
+<li> <a href="practicas/cursocloudaws_guia_practicas.pdf"> Guía de prácticas </a>
+</ul>
+</p>
+<p>
+Boletines de prácticas:
+<ul>
+<li> <a href="practicas/cursocloudaws_practica_ec2_basica_web.pdf"> Práctica Básica de Amazon EC2 (versión AWS Management Console)</a>  [<a  href="teoria/cursocloudaws_practica_basica_ec2_slides.pdf">Transparencias</a>]
+<li> <a href="practicas/cursocloudaws_practica_ec2_s3_autoscaling_web.pdf"> Práctica Avanzada de EC2, con S3 y Auto Scaling (versión AWS Management Console)</a>  [<a  href="teoria/cursocloudaws_practica_ec2_s3_autoscaling_slides.pdf">Transparencias</a>]
+<li> <a href="practicas/cursocloudaws_practica_vpc.pdf"> Práctica de Amazon VPC</a>
+</ul>
+</p>
+<!--
+<p>
+Actividad evaluable
+<ul>
+<li>
+	Se pretende que resuelvas un problema concreto utilizando las herramientas de AWS que has aprendido. Para ello se te plantea el siguiente escenario:
+	Trabajas para una empresa de soluciones informáticas para la nube. Tu cliente desea disponer de un servidor web para ofrecer un servicio de agregación de contenido.
+	En concreto, quiere comenzar ofreciendo la posibilidad de que usuarios externos se descarguen un conjunto de datos que permiten recrear un grafo de colaboración entre los personajes de Marvel (sic), disponible <a href="http://aws.amazon.com/datasets/5621954952932508">[Marvel Universal Social Graph]</a>. El cliente te comenta su preocupación por tener una solución de bajo coste pero desea poder satisfacer un posible aumento (previsto) en el número de accesos a la web, sin necesidad de costosas reconfiguraciones.
+	Implementa la solución que te pide el cliente y documenta el proceso.
+</ul>
+</p>
+-->
+
+<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+</div>
+</div>
+
+<!--
+TEMA 3
+-->
+<a class="show_hide" href="#" rel="#m3"><h3 id="modulo3"> Tema 3. Gestión de Datos en la Nube con Amazon Web Services </h3></a>
+<div id="m3" class="toggleDiv" style="display: none;">
+	<div class="view">
+		<p>
+			Este tema permite que conozcas las principales aproximaciones de gestión de datos en la nube.
+			Se cubre desde el almacenamiento basado en ficheros sobre proveedores de Cloud público, como Amazon S3 hasta almacenamiento basado en volúmenes orientados a bloques (EBS).
+			Se estudian servicios de gestión de bases de datos relacionales en la nube (como Amazon RDS), así como aproximaciones de tipo NoSQL como es el caso de Amazon DynamoDB.
+		</p>
+		<p>
+			Material disponible:
+			<ul>
+				<li> <a href="teoria/cursocloudaws_rds_nosql.pdf"> Transparencias </a>
+				</ul>
+			</p>
+			<p>
+				Vídeo-lecciones disponibles:
+				<ul>
+					<li> <a target="_blank"  href="https://media.upv.es/player/?id=0d703270-021e-11e6-851a-656f7e06a374"> El Servicio Amazon RDS</a> [7'55'']
+						<li> <a target="_blank"  href="https://media.upv.es/player/?id=036b31d0-021e-11e6-851a-656f7e06a374&autoplay=true"> El Servicio Amazon SimpleDB</a> [10'42'']
+						</ul>
+					</p>
+					<p>
+						Boletines de prácticas:
+						<ul>
+							<li> <a href="practicas/cursocloudaws_practica_rds.pdf"> Práctica de Amazon RDS</a>
+								<li> <a href="practicas/cursocloudaws_practica_dynamodb.pdf"> Práctica de Amazon DynamoDB</a>
+
+								</ul>
+							</p>
+							<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+	</div>
+</div>
+
+
+<!--
+	TEMA 4
+-->
+<a class="show_hide" href="#" rel="#m4"><h3 id="modulo5"> Tema 4. Arquitecturas de Aplicaciones en el Cloud </h3></a>
+<div id="m4" class="toggleDiv" style="display: none;">
+<div class="view">
+<p>
+Este tema aborda el diseño y las arquitecturas de aplicaciones en el Cloud.
+Se describen los principales requisitos de diseño de estas aplicaciones y se estudia la forma de conseguir estos requisitos usando los servicios de proveedores de Cloud público como Amazon Web Services (AWS) o Microsoft Azure. Se aborda el uso programático de AWS desde Python con boto. Se realiza una práctica de creación de una arquitectura elástica y escalable basada en una aplicación web (WordPress) con uso de base de datos.
+</p>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/cursocloudaws_apps.pdf"> Transparencias </a>
+</ul>
+</p>
+<p>
+Boletín de prácticas:
+<ul>
+<li> <a href="practicas/cursocloudaws_practica_app.pdf"> Práctica de Arquitectura de Aplicación Cloud</a> [<a href="teoria/cursocloudaws_practica_app_slides.pdf">Transparencias]</a>
+</ul>
+</p>
+<p>
+Vídeo-lecciones disponibles:
+<ul>
+<li> <a target="_blank"  href="http://politube.upv.es/play.php?vid=65265"> Introducción a la Práctica de Arquitectura de Applicaciones en la Nube (9'43'') </a>
+</ul>
+</p>
+<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+</div>
+</div>
+
+<!--
+	TEMA 5
+-->
+<a class="show_hide" href="#" rel="#m5"><h3 id="modulo5"> Tema 5. Despliegue y Configuración Automatizada (DevOps)</h3></a>
+<div id="m5" class="toggleDiv" style="display: none;">
+<div class="view">
+<p>
+Este módulo permite que conozcas el concepto de DevOps. Se abordan las tecnologías, herramientas y servicios involucrados.
+En particular, este tema permite que conozcas algunas de las herramientas existentes para la configuración automática de infraestructuras de cómputo sobre plataformas Cloud.
+Estas herramientas de DevOps, que permiten la creación de recetas de alto nivel para facilitar la automatización en la configuración de máquinas (virtuales).
+En concreto se aborda de forma práctica Ansible. También se trabaja con Amazon CloudFormation y Elastic Beanstalk como ejemplos de otros servicios destinados al despliegue automatizado de aplicaciones.
+</p>
+<p>
+Material disponible:
+<ul>
+<li> <a href="teoria/cursocloudaws_devops.pdf"> Transparencias </a>
+</ul>
+</p>
+<p>
+Vídeo-lecciones disponibles:
+<ul>
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=4a7f25e0-021e-11e6-851a-656f7e06a374&autoplay=true"> Configuración de Infraestructuras con Ansible</a> [12'56'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=4905f360-021e-11e6-851a-656f7e06a374&autoplay=true"> Despliegue Automatizado con AWS CloudFormation</a> [11'09'']
+<li> <a target="_blank"  href="https://media.upv.es/player/?id=aa523ed0-021e-11e6-851a-656f7e06a374&autoplay=true"> Introducción a AWS Elastic Beanstalk</a> [9'07'']
+<!--<li> <a target="_blank"  href="https://media.upv.es/player/?id=4c8d1e50-021e-11e6-851a-656f7e06a374&autoplay=true"> Despliegue de Arquitecturas de Aplicaciones con AWS OpsWorks</a> [11'11'']-->
+</ul>
+</p>
+<p>
+Boletines de prácticas:
+<ul>
+<li> <a href="practicas/cursocloudaws_practica_ansible.pdf"> Práctica con Ansible</a>
+<li> <a href="practicas/cursocloudaws_practica_cloudformation.pdf"> Práctica con Amazon CloudFormation</a>
+<!--<li> <a href="practicas/cursocloudaws_practica_beanstalk.pdf"> Despliegue de Arquitecturas de Aplicaciones con AWS Elastic Beanstalk </a> [OPCIONAL - No evaluable]-->
+<!--<li> <a href="practicas/cursocloudaws_practica_opsworks.pdf"> Práctica de AWS OpsWorks </a> -->
+</ul>
+</p>
+<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+</div>
+</div>
+
+<!--
+TEMA 6
+-->
+<a class="show_hide" href="#" rel="#m6"><h3 id="modulo6"> Tema 6. Serverless Computing </h3></a>
+<div id="m6" class="toggleDiv" style="display: none;">
+	<div class="view">
+		<p>
+			Este tema aborda serverless computing como un patrón de diseño para la creación de arquitecturas de aplicaciones sin gestión explícita de servidores.
+			Se trata AWS Lambda como servicio principal para el despliegue de arquitecturas de aplicaciones.
+			Se introduce el modelo de ejecución basado en computación reactiva dirigida por eventos soportado por AWS Lambda y se realizan prácticas utilizando dicho servicio.
+			Para ello, es necesario introducir los servicio CloudTrail, como fuente de eventos y auditoria de las acciones realizadas en AWS, así como el servicio CloudWatch para recibir y encaminar eventos sucedidos en la infraestructura.
+		</p>
+		<p>
+			Material disponible:
+			<ul>
+				<li> <a href="teoria/cursocloudaws_serverless.pdf"> Transparencias </a>
+				</ul>
+			</p>
+			<p>
+			Vídeo-lecciones disponibles:
+			<ul>
+				<li> <a target="_blank"  href="https://media.upv.es/player/?id=30874ba0-3f0c-11e7-83c8-b99f47788b89"> El servicio AWS CloudTrail</a> [8'25'']
+				<li> <a target="_blank"  href="https://media.upv.es/player/?id=7a1a5730-3f11-11e7-83c8-b99f47788b89"> El servicio Amazon CloudWatch </a> [10'05'']
+				<li> <a target="_blank"  href="https://media.upv.es/player/?id=8b54e680-3f9a-11e7-9b33-83cdd974e088"> El servicio AWS Lambda </a> [13'36'']
+			</ul>
+			</p>
+				<p>
+					Boletines de prácticas:
+					<ul>
+						<li> <a href="practicas/cursocloudaws_practica_lambda_sqs.pdf"> Práctica de Serverless y AWS Lambda</a>
+					</ul>
+				</p>
+		<div class="right" style="height:1em;"> <a href="#top">[Arriba]</a> </div>
+	</div>
+</div>
+
+
+
+<a class="show_hide" href="#" rel="#bib"><h3 id="bibliografia"> Bibliografía</h3></a>
+<div id="bib" class="toggleDiv" style="display: none;">
+<div class="view">
+<h4> Libros </h4>
+<ul>	
+	<li> Ruparelia, Nayan B. <a href="https://mitpress.mit.edu/9780262529099/cloud-computing/">Cloud computing</a>. Mit Press, 2023.
+	<li> Hurwitz, J. S., & Kirsch, D. (2020). <a href="https://books.google.es/books/about/Cloud_Computing_For_Dummies.html?id=yxNuuQEACAAJ&redir_esc=y">Cloud computing for dummies</a>. John Wiley & Sons.</li>
+	<li>Sehgal, N. K., & Bhatt, P. C. (2018). <a href="https://link.springer.com/content/pdf/10.1007/978-3-319-77839-6.pdf">Cloud computing</a>. Heidelberg: Springer.</li>
+	<li> Bill Wilder. <a target="_blank"  href="https://shop.oreilly.com/product/0636920023777.do"> Cloud Architecture Patterns. Develop cloud-native applications</a>. O'Reilly, 2012.
+	<li> Thomas Erl, Ricardo Puttini, Zaigham Mahmood. <a target="_blank"  href="https://www.amazon.com/Cloud-Computing-Concepts-Technology-Architecture/dp/0133387526/ref=sr_1_1?s=books&ie=UTF8&qid=1381674564&sr=1-1&keywords=cloud+computing"> Cloud Computing: Concepts, Technology & Architecture</a>. Prentice Hall, 2013.
+	<li> R. Buyya, J. Broberg, and A. M. Goscinski, <a href="https://onlinelibrary.wiley.com/doi/10.1002/9780470940105.fmatter/pdf">Cloud computing: Principles and Paradigms</a>. Wiley, 2011.
+    <li> K. Hwang, J. Dongarra, and G. Fox, <a href="https://store.elsevier.com/product.jsp?isbn=9780123858801">Distributed and Cloud Computing: From Parallel Processing to the Internet of Things</a>. Morgan Kaufmann, 2011.
+	<li> A. T. Velte, T. J. Velte, R. Elsenpeter, <a href="https://www.amazon.es/Cloud-Computing-A-Practical-Approach/dp/0071626948">Cloud Computing. A Practical Approach</a>, Mc Graw Hill, 2010
+	<li> J. van Vliet, F. Paganelli, <a href="https://www.amazon.com/Programming-Amazon-EC2-Jurg-Vliet/dp/1449393683">Programming Amazon EC2</a>, O'Reilly,2011.
+</ul>
+<h4> Artículos Científicos </h4>
+<ul>
+	<li> Buyya, Rajkumar et al. 2017. <a href="https://arxiv.org/abs/1711.09123">“A Manifesto for Future Generation Cloud Computing: Research Directions for the Next Decade.”</a> : 1–51.</li>
+	<li> Bittencourt, Luiz et al. 2018. <a href="https://www.sciencedirect.com/science/article/pii/S2542660518300635">“The Internet of Things, Fog and Cloud Continuum: Integration and Challenges.”</a> Internet of Things 3–4: 134–55.(October 16, 2018).</li>
+	<li> I. Foster, Y. Zhao, I. Raicu, and S. Lu, <a target="_blank" href="https://arxiv.org/pdf/0901.0131.pdf"> Cloud Computing and Grid Computing 360-Degree Compared</a> in 2008 Grid Comput. Environ. Work., pp. 1–10, Nov. 2008.
+	<li> M. Armbrust, A. Fox, R. Griffith, and A. Joseph, <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.149.7163&rep=rep1&type=pdf">Above the clouds: A berkeley view of cloud computing</a>, 2009.
+    <li> L. M. Vaquero, L. Rodero-Merino, J. Caceres, and M. Lindner, <a href="https://dl.acm.org/citation.cfm?id=1496091.1496100">A break in the clouds</a>, ACM SIGCOMM Computer Communication Review, vol. 39, no. 1, p. 50, Dec. 2008.
+    <li> Prith Banerjee et al, <a href="https://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5719575&tag=1">Everything as a Service: Powering the New Information Economy</a>, IEEE Computer, March 2011.
+	<li> Balakrishna Narasimhan and Ryan Nichols, <a href="https://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5719574">State of Cloud Applications and Platforms: The Cloud Adopters' View</a>, IEEE Computer, March 2011.
+	<li>Jamie Erbes et al, <a href="https://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6155711">The future of enterprise IT in the Cloud</a>, IEEE Computer, May 2012.
+</ul>
+<h4> Páginas Web </h4>
+<ul>
+	<li> <a href="https://www.amazon.com/aws"> https://www.amazon.com/aws </a>	
+	<li> <a href="https://aws.amazon.com/whitepapers"> https://aws.amazon.com/whitepapers </a>
+	<li> <a href="https://www.zdnet.com/article/what-is-cloud-computing-everything-you-need-to-know-about-the-cloud/"> What is cloud computing? Everything you need to know about the cloud explained</a></li>
+	<li> <a target="_blank"  href="https://aws.amazon.com/es/architecture/"> Centro de arquitectura de AWS </a>
+	<li> <a target="_blank" href="https://aws.amazon.com/es/certification/"> Programa de certificación de AWS </a>
+</ul>	
+
+</div>
+</div>
+
+<div class="center">
+	<a href="https://www.grycap.upv.es"><img src="support/grycap.png" width="150px"></a>
+	<a href="https://www.i3m.upv.es"><img src="support/i3m.png" width="170px"></a>
+	<a href="https://www.upv.es"><img src="support/upv.png" width="190px"></a>
+</div>
+
+<!-- end -->
+</div>
+</body>
+</html>
