@@ -1,0 +1,78 @@
+ACTIVIDAD 1
+
+No se podrá implantar en un sistema de servicios altamente escalables con este sistema de comunicación de grupos cerrados porque no admite alta disponibilidad dado el solape en el envío de la información. Si tenemos 1000 mensajes de 40kb por segundo, se necesitaría eníar cada uno de esos mensajes a cada uno de los nodos replica. Como cada uno de los mensajes esperan una confirmación de recepción si se tiene un número alto de nodos replica, aumentará el tiempo de respuesta del sistema. Este sistema es útil para sistemas que tienen dos o tres nodos replica.
+
+===========
+
+Se podría utilizar porque se utilizarian con pocos nodos y no se saturaría la red al comunicarse el uno con el otro.
+
+ACTIVIDAD 2
+
+http://zguide.zeromq.org/php:chapter5
+
+1.
+	ZeroMQ está orientado a la escalabilidad, lo que significa que un numero muy grande de datos se puede enviar de manera más rapida a multiples nodos. Si se envían por ejemplo un millon de mensajes por segundo a cientos de nodos, PUB/SUB de ZeroMQ es una buena solución. [http://zguide.zeromq.org/php:chapter5]
+
+2.
+	PUB/SUB no se garantiza la entrega del mensaje a todos los nodos. Si un instante t un nodo V se cae, luego en el instante t+1 se envía un mensaje M y el nodo V se recupera en el instante t+2, el mensaje M no será recibido por el nodo V. [http://zguide.zeromq.org/php:chapter5]
+3.
+	Si es un solo Publicador se garantiza el orden de llegada de los mensaje. También se garantiza la consistencia.
+	Si hay más de un Publicador no se garantiza el orden de llegada de los mensajes. Tampoco se tendría consistencia porque el orden de llegada de los mensajes afectaría el funcionamiento del nodo. [http://zguide.zeromq.org/php:chapter5]
+
+4.
+	La comunicación de PUB/SUB es asincrona. Si un nodo publicador ya se ha iniciado y luego se ha iniciado un dodo suscriptor, este no recibiría los mensajes que ya fueeon publicados por el nodo publicador. [http://learning-0mq-with-pyzmq.readthedocs.org/en/latest/pyzmq/patterns/pubsub.html]
+
+5.
+
+	En las conexiones de PUB/SUB, si un cliente se desconecta el servidor no se percata de ello. Eso es posible dado que el servidor no recibe ninguna confirmación por parte de los clientes de la recepción del mensaje.
+
+	Si el servidor es el que se desconecta, los clientes no tienen porqué percatarse si no se realiza ninguna prevención por parte de los clientes. Si el servidor envía un mensaje de que está vivo periodicamente, al pasar un tiempo si los clientes no reciben ese mensaje pueden sospechar ya que el servidor ha caido.
+
+	[http://zguide.zeromq.org/php:chapter4]
+
+
+	En clase se comento que ZeroMQ puede tener internamente uns sistema de monitorización para detectar la caída de una conexión para eviar realiar envíos inecesarios, pero a la vista del uso por parte del cliente eso no es visible. 
+
+ACTIVIDAD 3
+
+1.
+	Sí. Porque si tenemos dos procesos P y Q que instalan la misma vista V sobre la misma vista previa V', enconces cualquier mensaje entregado por P en V' fue también entregado por Q en V'.
+
+	Como la propriedad 3 dice que si un proceso P entrega un mensaje m en la vista V y algún proceso Q envió m en la vista V' enconteces V=V'. Esto está implicito en la definicion de la propriedad 5, cuando se explica como se relacionan P y Q con V y V'.
+
+	Luego como la propriedad 4 dice que si dos processo P y Q entregan un mensaje en m, ambos lo entregan en la misma vista. En la propriedad 5 eso se explica al final cuando un mensaje P se envía en V', también será entregado a Q en V'.
+
+2.
+	Anter de realizar un envío a una vista diferente se tiene que haber acabado el envío inicial o se tienen que descartar los mensajes. Mientras que la 4º propriedad solo admite comunicación en la misma vista.
+3.
+	No. No se puede porque no estaba en la vista cuando se envió los mensajes. Por lo tanto no se puede recuperar los menjase que se enviaron en la vista porque ahora están en una vista diferente.
+
+	La propiedad 3 sólo admite que el mensaje m esté en la vista en la que se envió.
+4.
+	No. El coste sería excesivo y la pertenencia al grupo no es tan estricto. La sincronía virtual no permitiría al sistema escalar de forma facil. La sincronía virtual incluye consenso lo que lo hace muy costoso.
+
+ACTIVIDAD 4
+http://www.sc.ehu.es/acwlaalm/sdi/comm-grupos-slides.pdf
+
+1.
+	Cifusión FIFO: mediante contadores FBCAST. Cada mensaje tiene un identificador de secuencia asignado. Si el mensaje se recibe tiene el indicador correcto, entonces el mensaje se entrega de imediato. En cambio si el mensaje que se recibe tiene un identificador que no corresponde al mensaje, entonces es encolado y no será entregado hasta que se haya recibido el mensaje previo. En este caso se necesitarían M mensajes por N nodos.
+	
+2.
+	difusión causal: mediante relojes vectoriales CBCAST. Cada mensaje tiene un identificador asignado. Si el mensaje se recibe tiene el indicador correcto, entonces el mensaje se entrega de imediato. En cambio si el mensaje que se recibe tiene un identificador que no corresponde al orden de los mensajes, entonces es encolado y no será entregado hasta que se haya recibido el mensaje previo. En este caso se necesitarían M mensajes por N nodos.
+
+3. ABCAST
+	difusión con orden total síncrona:
+	
+	• al ejecutar A-multicast(G, m): ejecutar R-multicast(G, m),
+	incluyendo en el mensaje
+	m la marca de tiempo local t(m)
+	• al ejecutar R-deliver(m): planificar A-deliver(m) para el
+	instante local t(m)+ ∆
+		– ∆: tiempo máximo de transmisión de mensajes en el sistema + desviación máxima de los relojes (se suponen sincronizados)
+		– si A-deliver no se puede ejecutar en el instante planificado (porque el mensaje se ha entregado fiablemente demasiado tarde), significa que el sistema ha dejado de comportarse de manera síncrona
+
+ACTIVIDAD 5
+
+1.
+
+2.

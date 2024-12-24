@@ -1,0 +1,103 @@
+ACTIVIDAD 1:
+
+	1.
+
+	Venajas que puede tener el modelo de replicación pasivo es que es muy facil de implementar. Tiene un coste muy bajo en comunicaciones y es muy util para el caso de tener solo 2 nodos.
+
+	Inconvenientes es que harían falta detectore perfectos para poder detectar bien las sospechas del nodo principal y si no se dispne un detector perfecto se dificturá la elección de un nodo primario nuevo.
+
+	2.
+
+	Dependiendo del detectores de fallos, pero en el peor caso el grado de completitud es débil porque en el caso en el que el nodo principal fallara, algunas de las replicas lo detectarán y sospecharán de el. A la vez cabe la posibilidad de que la replica secundaria tendría algún fallo y esta no detecte el fallo de la replica principal. 
+
+
+	La precisión también depende de la red, dado que si se tiene un sistema puramente sincrono con detectores perfectos el grado que tiene es fuerte dado que se está monitorizando una solo nodo primario y hasta que este no responda no será sospechado.
+	
+
+	3. 
+
+	En el caso en el que fallara una de las subredes, al estar aisladas, esta se configuraría para funcionar como un nodo principal ya que no tiene comunicación con las demás subredes para comprobar su sospecha. Además como el nodo principal tampoco revisa el estado de su replicas podría haber un momento en el que hay dos nodos principales si no se realiza alguna comprobación para impedir este caso. 
+
+
+	4. 
+
+	En el caso de que se utilice un algoritmo de eleción de líder para seleccionar una nueva réplica primaria, los nodos secundarios deben de ponerse de acuerdo mediante un consenso. En el caso en el que se sospecha del nodo principal, se debería de confirmar por todos y no solo por una minoría, que es el caso. Por ello no se puede considerar esta mejora un equivalente a un servicio de pertenencia porque que no se conocen los nodos secundarios que funcionan de manera adecuada y cuales no. En este caso, si un nodo sospecha del nodo principal, solo se lanzaría una petición de puesta en común de un nuevo líder.
+
+
+ACTIVIDAD 2:
+
+	Un servicio no puede implementarse de manera precisa un servicio de pertenencia en un sistema distribuido asincróno dado que al ser asíncronos, no se puede diferenciar de manera exacta si un nodo ha fallado o tiene un retardo.
+
+	A la hora de detectar los fallos se crea un sistema de pertenencia a grupos donde se crea también una vista con los nodos que están funcionando actualmente. Si se añade un nuevo nodo o un nodo falla, se crea una nueva vista y se informa a todos los nodos restantes de la existencia de esta nueva vista. Para ello también se tiene un algoritmo de concesnso para detectar de manera más exacta posible si un nodo ha fallado o no.
+
+	No es posible implementar un detector de fallos perfecto, lo que se puede hacer es establecer un tiempo límite de respuesta que sea suficientemente grande para que el nodo responda. Si el nodo no ha contestado antes del tiempo límite establecido, se considera que el nodo a fallado y si hay un consenso por el resto de nodos entonces se crearía una vista nueva con los nodos restantes. El problema viene dado al estár en un entorno asíncrono.
+
+ACTIVIDAD 3:
+	1.
+
+	No puede implementarse un detector de fallos perfecto, dado que si uno de los nodos sospechan de un nodo, este difunde sus sospecha a los demás nodos y lo acceptan sin comprobar si es un falso positivo.
+
+	2.
+
+	De completitud, ya que los procesos que han fallado se considerarán sospechosos.En el caso de que se da un falso positivo, entonces se sospechará de un proceso correcto y por lo tanto no se cumple la propriedad de precisión.
+
+	3.
+
+	No puede haber fuerte dado que es muy dificil diferenciar en un sistema distribuido asincrono si un proceso ha fallado o ha tardado más tiempo en contestar. Si se da este caso, se llegaría a sospechar de un sistema correcto y la propriedad de la precisión fuerte es que ningún proceso es sospechado antes de fallar.
+
+	Completitud fuerte si que puede haber dado que con el paso del tiempo el proceso fallido será detectado por todos los procesos correctos. Todos los procesos correctos pueden comprobar la información que tienen del proceso fallido y compararla con la información recibida por los demás procesos y llegar a un concenso.
+
+ACTIVIDAD 4:
+Buscar articulos que están relacionados con Chandra y Toueg.
+
+Google: Side share. Busqueda de bibliografías.
+
+Unreliable failure detectors for reliable distributed systems.
+
+Referencia 1) 
+
+“Fault-tolerant broadcast in anonymous distributed systems with fair lossy channels” por J. Tang, M. Larrea, S. Arévalo, E. Jiménez.
+
+El identificador que se utiliza en el articulo para la identificación de procesos se basa en el de Chandra y Toueg, aúnque se amplía.
+
+===============================================================
+
+J. Tang, M. Larrea, S. Arévalo, E. Jiménez: “Fault-tolerant broadcast in anonymous distributed systems with fair lossy channels”, Technical Report EHU-KAT-IK-06-14 of the University of the Basque Country UPV/EHU, December 2014 
+Enlace: http://www.sc.ehu.es/acwlaalm/research/EHU-KAT-IK-06-14.pdf [Consulta: febrero, 2016] 
+En este artículo se plantea la implementación de algoritmos de un broadcast de un sistema tolerante a fallos donde se dé pérdida de mensajes en los canales de comunicación y/o anonimidad de los mensajes recibidos. 
+
+En el artículo de Chandra y Toueg se utiliza el identificador del proceso como parte de la información en caso de fallo, pero este artículo extiende el diseño de detectores de fallos a sistemas distribuidos anónimos donde los procesos no tienen identificadores. La clave del trabajo reside en conseguir identificar los procesos sin perder la anonimidad del sistema. 
+
+Referencia 2) 
+
+“Byzantine Fault Detectors for Solving Consensus” por K. P. Kihlstrom, L. E. Moser, P. M. Melliar-Smith.
+
+Se expica como amplían el trabajo de Chandra y Toueg para que los detectores de fallos no fiables pueden resolver el consenso en sistemas asíncronos distribuidos sujetos a fallos bizantinos. 
+
+===============================================================
+
+K. P. Kihlstrom, L. E. Moser, P. M. Melliar-Smith: “Byzantine Fault Detectors for Solving Consensus”, The Computer Journal, Vol. 46, No. 1, 2003 
+Enlace: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.10.328&rep=rep1&type=pdf [Consulta: febrero, 2016] 
+
+En este artículo se amplía el trabajo de Chandra y Toueg considerando detectores de fallos no fiables para resolver el consenso en sistemas asíncronos distribuidos sujetos a fallos bizantinos. 
+
+Referencia 3) 
+
+C. F. Espinosa Gualotuña, C. R. Egas Acosta: “Selección de un Gateway de respaldo, adaptando el algoritmo Omega en Redes 6LowPAN”, Revista Tecnológica ESPOL – RTE, Vol. 28, N. 5, 179193, diciembre 2015 
+Enlace: www.rte.espol.edu.ec/index.php/tecnologica/article/download/433/300 [Consulta: febrero, 2016] 
+En este artículo se propone una adaptación del algoritmo propuesto por Chandra y Toueg  para mejorar la confiabilidad del acceso a internet de una red sensor inalámbrica, con la implementación de un prototipo de red 6LowPAN. 
+
+En concreto, se propone un algoritmo a implementar en cada nodo sensor inalámbrico, tomando como parámetros el nivel de batería de los nodos y su identificador, lo que permite la elección de un Gateway de respaldo de entre los posibles nodos candidatos. En el caso de que el nodo Gateway seleccionado en un inicio del funcionamiento de la red se encuentre indisponible, la utilización del algoritmo permite tener una alternativa de selección de un nodo Gateway de respaldo, cuya finalidad es brindar mayor confiabilidad en la conectividad de este tipo de redes con Internet. 
+
+
+==========
+
+"Implementation and performance evaluation of an adaptable failure de- tector", por Marin Bertier, Olivier Marin y Pierre Sens.
+
+Se explica como crean una variante de la implementación basado en el modelo de diamante de Chandra y Toueg que se puede adaptar y escalar de manera más optima.
+
+This implementation is a variant of the heartbeat failure detector which is adaptable and can support scalable applications. In this implementation we dissociate two aspects: a basic estimation of the expected arrival date to provide a short detection time, and an adaptation of the quality of service according to application needs. The latter is based on two principles: an adaptation layer and a heuristic to adapt the sending period of "I am alive" messages.
+
+
+
+El art ́ıculo trata la implementaci ́on de un nuevo detector de fallos basado en el modelo diamante P de Chandra y Toueg.

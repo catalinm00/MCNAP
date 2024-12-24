@@ -1,0 +1,80 @@
+ACTIVIDAD 1
+1.
+
+Moelo pasivo con lectorua en las replicas es el más acertado. Con una petición a un solo nodo. Como la infromación no es muy critica no hoy problema en obtener un valor antiguo. Borrar dos veces no tiene efecto y la inserción dos veces no tiene efecto. Actualización de las replicas sería perezosa, de manera gradual y no bloqueante. 
+
+2. El trabajo tiene bastante peso, las modificaciones afectan a unos pocos registros. Elegir uno o más de uno pero razonar.
+
+Pasiva o semipasiva, donde el primario es variable de tal manera que la carga se reparte a la hora de escribir y lectura se puede hacer directamente de los nodos secundarios. Si se emplea el semipasivo, el orden es siempre el mismo, pero si se utiliza con conocimiento de la información, se difundirá la información a los que les hace falta actualizar su información de manera más urgente..
+
+ACTIVIDAD 2
+
+Orden el mismo.
+
+1. Asincronico = de forma paralela sin confirmación
+
+Al utilizar un sistema de prolongación asincróna, se mejora la respuesta a los clientes y la velocidad del sistema, dado que no tiene que esperar que se actualice la información a todos los nodos.
+
+2.
+
+Al no tener una confirmación de la difusión puede generar inconsistencia en los datos. En el caso en el que el nodo primario falla y se sustituye por un nodo no actualizado o con datos erróneos, este propagará unos valores erróneos a los clientes y a las réplicas.
+
+3.
+
+La capacidad del servicio mejora dado que ahora se podrán realizar un número de consultas mayor comparado con el modelo asincrono. Además se liberará carga del nodo principal, dado muchas lecturas se realizarán desde los nodos secundarios.
+
+4. 
+
+La inconsistencia entre las replicas a la hora de realizar las lecturas existirán si se realiza una petición de lectura antes de que acabe de se procese la escritura. En cambio si en el sistema se deja pasar un tiempo sin realizar ninguna escritura, el sistema acabará siendo consistente. 
+
+5.
+
+La capacidad del servicio mejora de manera considerable mientras no hay conflictos en las peticiones y no se tenga que aplicar el control de concurrencia. También se tiene que tener el cuenta las limitaciones fisicas del sistema dado que si se realizar un numero masivo de peticiones y se crea un hilo por cada uno de ellas, el sistema que puede colapsar y quedar sin memoria. 
+
+6.
+
+La consistencia entre las replicas existira, pero si y solo si se cumple el orden de las operaciones y el control de concurrencia locales es muy eficiente para impedir todo tipo de inconsistencia. Si eso es posible habrá consistencia, pero con el paso del tiempo, ya que seguirá sin esperarse el nodo primario a que se apliquen las actualizaciones a los nodos secundarios.
+
+7.
+
+Al aplicarse todas las optimizaciones la capacidad del servicio será muy superior al anterior o a cualquiera de las optimizaciones por separado, dado que se podrán atender un mayor número de peticiones en un mismo instante de tiempo. Además cada una de las optimizaciones por separado aumentaba la capacidad del servicio, así que al juntar todas las optimizaciones la capacidad del servicio aumentará de manesa sustancial.
+
+8.
+
+La consistencia entre las replicas no será mejor al combinar todas las otimizaciones dado que el problema principal es la actualizacion asincronica. Al no esperar un respuesta de los nodos secundarios, las actualizaciones llegarán en un momento dado, pero no será de manera imediata y por la tanto hace falta que pase algo de tiempo hasta que el sistema este perfectamente actualizado. Eso hace que la probabilidad de acceder a la información de un nodo secundario no sea la más actualizada sea grande, si ha transcurrido una modificación.
+
+ACTIVIDAD 3
+
+En caso de fallo intermedio se puede salatar al siguiente nodo. Con muchas escrituras conflictivas es mucho más eficiente y la recuperación de fallos es mucho más sencillo cuando el nodo primario falle.
+
+1.
+
+Al tener las escritura y lecturas separadas en replicas distintas, se pueden atender un numero mayor de peticiones y bajar la carga de los nodos. 
+
+La elección de una nueva replica "cabeza" y "cola" es mucho más sencillo y no se necesita concenso. En caso de la "cabeza", al dejar de funcionar, la que toma su lugar es la réplica que se encuenta a su derecha. En el  caso de la "cola", la réplica que toma su lugar es la réplica de la izquierda. 
+
+2.
+
+Uno de los problemas que pueden aparecer es que una de las réplicas escriba mal el valor y este a su vez se propague hasta la cola. Por lo que el cliente recibirá un valor erroneo como resultado.
+
+Existe la posibilidad de tener un particionado de red.
+
+Un ejemplo sería el siguiente:
+
+Cabeza => Réplica => Réplica => Réplica => Cola
+Cabeza => Réplica =>    X    => Réplica => Cola
+Cabeza =>   Cola  =>    X    =>  Cabeza => Cola
+
+El procesamiento de las peticiones puede llegar a ser más complejas dado tras realizar una escritura en un nodo, posteriormente se tiene que esperar la respuesta en otro distinto.
+
+3.
+
+En este caso no es necesario que el cliente envíe su peticion a todas las replicas y esperar una respuesta cuando haya un concenso superior al 50% por ejemplo. 
+
+El tiempo de respuesta será menor en comparación con el modelo activo.
+
+4.
+
+Uno de los problemas que pueden aparecer es que una de las réplicas escriba mal el valor y este a su vez se propague hasta la cola. Por lo que el cliente recibirá un valor erroneo como resultado.
+
+Se tiene que tener distintas versiones del código. Una versión para cada nodo con su función. ("Cabeza","Réplica","Cola")

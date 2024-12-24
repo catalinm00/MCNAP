@@ -1,0 +1,72 @@
+ACTIVIDAD 5
+
+1.
+
+FIFO: Para que se cumpla este modelo de consistencia la lectura se tiene que realizar en el orden de escritura de un proceso. En este caso al no se cumple al no tener dos escrituras realziadas por un mismo proceso. 
+
+CAUSAL: Este modelo de consistencia tampoco se cumple porque para que se cumpla debería de leer un dato y posteriormente escribir otro dato. En este caso no se cumple esta caracteristica.
+
+SECUENCIAL=CACHE: Este modelo de consistencia si que se cumple a persar de solo leerse P1:r(x)3, sigue leyendo en el orden que se ha escrito 6,5,3 y por lo tanto no se contradice el orden.
+
+ESTRICTO: No se cumple este modelo dado que todos los procesos deberían de leer el valor más reciente y por lo tanto todos deberían de leer r(x)3.
+
+2.
+
+FIFO: En este caso el modelo de consistencia se cumple dado que se respeta el orden de lectra de los procesos con el orden de escritura de un solo proceso. 
+P1:w(x)2->P1:w(x)3
+P2:w(x)1->P2:w(x)4
+
+CAUSAL: EL modelo de consistencia se cumple dado que se respetan las dependencias.
+P1:w(x)2->P1:w(x)1
+P1:w(x)2->P1:w(x)3
+P2:w(x)1->P2:w(x)4
+Lecturas:
+P3:r(x)1->r(x)4->r(x)3
+P4:r(x)2->r(x)1->r(x)3->r(x)4
+
+SECUENCIAL=CACHE: No se cumple porque no existe un orden de lectura consntante.
+P2 lee r(x)2
+P3 lee r(x)1,r(x)4,r(x)3
+P4 lee r(x)2,r(x)1,r(x)3,r(x)4
+
+ESTRICTO: No se cumple este modelo dado que todos los procesos deberían de leer el valor más reciente y no es el caso.
+
+3.
+
+FIFO: Si. Porque el orden de lectura de los datos se cumple con el orden de escritura de un solo proceso.
+P1:w(x)2->P1:w(x)3
+P2:w(x)1->P2:w(x)4
+
+CAUSAL: Si, dado que se respetan las dependencias.
+P1:w(x)2->P1:w(x)3
+P2:w(x)1->P2:w(x)4
+
+SECUENCIAL=CACHE: No. No se realiza una lectura de los datos de manera constante.
+P2:r(x)2
+P3:r(x)1->r(x)2->r(x)4->r(x)3
+P4:r(x)2->r(x)1->r(x)3->r(x)4
+
+ESTRICTO: No se cumple este modelo dado que todos los procesos deberían de leer el valor más reciente y no es el caso.
+
+ACTIVIDAD 2
+
+1.
+
+2.
+
+3.
+
+4.
+
+ACTIVIDAD 4
+	Razonar
+
+ACTIVIDAD 6
+
+1.
+
+2.
+
+3.
+
+4.

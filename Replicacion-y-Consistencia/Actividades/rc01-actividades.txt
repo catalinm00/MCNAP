@@ -1,0 +1,111 @@
+ACTIVIDAD 1
+
+ACTIVIDAD 1Imagine que en una asignatura de programación se le pide que escriba un programa que implante una calculadora científica. Por falta de tiempo, demomento se ha escrito un programa que es capaz de manejar únicamentenúmeros enteros y los operadores ‘=’ (para mostrar el resultado), ‘+’(suma), ‘*’ (multiplicación), ‘-‘ (resta), ‘/’ (división) y ‘%’ (módulo). No secomprueba si el valor facilitado en los argumentos es coherente con laoperación solicitada. Posteriormente se extiende ligeramente el programapara que también admita números reales como argumentos, pero se siguesin comprobar la coherencia entre operadores y argumentos. Ahoratenemos un programa que todavía no está depurado y que es claramenteincompleto. ¿Qué cree que ocurrirá si algún usuario utiliza esta versión delprograma y realiza las operaciones que se listan a continuación? Justifique sien cada situación se generará: (i) un resultado correcto, (ii) un defecto, (iii)un error, (iv) un fallo.
+
+a)El usuario introduce la siguiente secuencia: 456 + 23 =
+
+Un resultado correcto.
+
+b)El usuario introduce la siguiente secuencia: 345 / 0 =
+Es un defecto que se manifestará como un error o un fallo.
+
+c)El usuario introduce la siguiente secuencia: 345.23 % 2.0 =
+
+Es un defecto de programación que producirá un error dado que la calculadora no acepta reales.
+
+d)A partir de los ejemplos que acaba de analizar, justifique si el diseño y desarrollo cuidadoso de un programa puede reducir las situaciones queconduzcan a la aparición de defectos.
+
+Una cuidadosa programación si que aumentará la robustez de la aplicación, pero se debería de tener en cuenta que pueden aparecer defectos que no estan previstos.
+
+
+ACTIVIDAD 2
+
+1. Parada
+
+Con disponer de f+1 replicas sería suficiente para que el sistema siga funcionando, dado que si fallan f nodos, quedaría uno que actuaría de nodo primario.x
+
+2. Omisión de recepciones.
+
+Se necesitaría disponer de  f+2 nodos para que al ménos dós replicas más para que se comuníquen con el nodo principal y evitar tener dos nodos principales. Esta situación se explica tambíen en el enunciado.
+
+3. Justifique por qué bajo este modelo pasivo no se podrá soportar el modelo de fallos arbitrarios.
+
+Porque solo hay un nodo que envía la información (Nodo primario) y por lo tanto no se comprueba si la respuesta es valida o es un error dada la confianza que tiene los nodos secundarios.
+
+ACTIVIDAD 3
+
+Si estamos en el caso donde la conexión entre dos nodos (que están conectados directamente) tienen un retraso importante a la hora de comunicarse o se genera un fallo por omisión y la razón de fallo es causado por el médio de comunicación, sería difícil aplicar un modelo de parada. En este caso se sospecharía de los dos nodos, en lugar de una solo y por lo tanto se debería de estudiar más en detalle el caso, dado que resultará dificil saber si se tiene que hacer una parada y en cual de los dos nodos se debería de realizar. 
+
+ACTIVIDAD 4
+
+Si estamos con un modelo pasivo donde todos los fallos se pueden reducir a fallos de parada menos los fallos bizantino, el mecanizmo que se va a utilizar para detectar un fallo será mediante la sospecha.
+
+En el caso en el que se sospecha de una replica primaria, esta se debería de reiniciar y sustituir por una de las replica secundarias más actualizada y el resto de replicas deberían de actualizar su información sobre cual es la nueva máquina primaria. La máquina al reiniciarse se incorporará como una máquina secundaria. Los pasos de como se va a incorporár serán los mismos que para las máquinas secundarias que se explicarán a continuación.
+
+En el caso de que se sospeche de una máquina secundaria, esta se debería de reiniciar y a la hora de realizarse la incorporación, primero se debería estudiar el estado de la máquina que puede ser de amnesia, amnesia parcial, pausa o parada.
+
+	En el caso de que la máquina se reinicie en un estado de amnesia, significa que no depende de las peticiones que atendió antes de fallar y se reinicia con un estado preestablecido.
+
+	En el caso de que la máquina se reinicie en un estado de amnesia parcial, significa que la máquina recupera parte de la información que tenía antes de fallar, pero también tiene unos valores preestabledicos.
+
+	En el caso de que la máquina se reinicie en un estado de pausa, significa que la máquina es capaz de recuperar toda la información que tenía antes de fallar.
+
+	En el caso de que la máquina se reinicie en un estado de parada, significa que ya no es posible reiniciarla y permanecerá parada.
+
+En el caso de que el estado de la máquina al reiniciarse es de parada, primero se iniciará una nueva máquina con valores preestablecidos para sustituir esa máquina si es posible.
+
+A continuación la máquina recibirá la información sobre el conjunto de máquinas secundarias y a su vez el resto de máquinas secundarías actulizarán su información. Este ultimo paso se realiza por todas las máquinas indiferente del estado que tenga.
+
+
+ACTIVIDAD 5
+
+
+Si estamos en una situación de particionado de red, existen dos posibilidades de resolver este problema para garantizar la máxima disponibilidad. 
+
+La primera posibilidad es que la aplicación que se ha desarollado permita trabajar son el sistema particionado.
+Eso puede generar problemas en cuanto a la consistencia de los datos si no se trata de comprobar y sincronizar la información que contiene cada una de las replicas. Lo que se garantiza con este sistema es que se tendrá una alta disponibilidad. 
+
+La segunda posiblidad es utilizar solo aquel subgrupo que tenga al menos más de la mitad de los procesos preconfigurados. De esta manera se mantiene la consistencia de manera más facil, pero se reduce la disponibilidad.
+
+
+ACTIVIDAD 6
+
+Fiabilidad (“reliability”) y seguridad (“safety”): 
+
+Si se tiene una mayor seguridad, entonces la probabilidad de que un sistema no falle de manera catastrófica durante un intervalo de tiempo aumenta y eso incrementa a su vez la fiabilidad.  
+
+Fiabilidad (“reliability”) y disponibilidad (“availability”):
+
+Si se tiene una mayor disponibilidad, entonces la fiabilidad del sistema aumenta ya que hay mayores probabilidades de que el sistema se funcional en un instante t.
+
+Fiabilidad (“reliability”) y mantenibilidad (“maintainability”): 
+
+Si se tiene una mayor fiabilidad del sistema, entonces la mantenibilidad será alta también ya que no se deberán de realizar un numero elevado de recuperaciones para mantener el sistema en funcionamiento. En caso de el que sistema falle y se realiza la recuperación, a mayor mantenibilidad mayor fiabilidad habrá en el sistema ya que se recuperará de manera más rapida.
+
+Fiabilidad (“reliability”) y seguridad (“security”): 
+
+Si se tiene una mayor seguridad, la fiabilidad del sistema aumentará ya que habrá menos o preferiblemente nuguna intrusión en el sistema que afecte la información o el sistema. 
+
+Seguridad (“safety”) y disponibilidad (“availability”): 
+
+Si se tiene una mayor seguridad, la posiblidad de que el sistema falle de manera catastrófica se reducen y eso aumenta la disponibilidad del sistema.
+
+Seguridad (“safety”) y mantenibilidad (“maintainability”): 
+
+Si se tiene una mayor seguridad, la posiblidad de que el sistema falle de manera catastrófica se reducen y eso a su vez disminuye la necesidad de realizar el mantenimiento. En caso de que se tenga que realizar un mantenimiento, este no afecta la seguridad del sistema.
+
+Seguridad (“safety”) y seguridad (“security”):
+
+Si se tiene una mayor seguridad (“security”), se disminuye la posibilidad de que haya una intrución en el sistema y eso aumenta la seguridad (“safety”) del sistema, dado que habrán menos posiblidades de que se produzca un fallo catastrofico por culpa de la intrusión.
+
+Disponibilidad (“availability”) y mantenibilidad (“maintainability”): 
+
+Si se tiene mayor disponibilidad, la posiblidad de que el sistema falle y se tenga que recuperar disminuye. En cambio si se tiene que realizar realizar una recuperación, está afecta la disponibilidad del sistema y por lo tanto cuanto menor es el tiempo de mantenibilidad, mayor será la disponibilidad.
+
+Disponibilidad (“availability”) y seguridad (“security”):
+
+Si se tiene mayor seguridad, aumentará la disponibilidad del sistema dado que al no tener menos o nungun intrusos en el sistema, menor es la posiblidad de tener que realizar una parada del sistema. 
+
+Mantenibilidad (“maintainability”) y seguridad (“security”):
+
+Si se tiene mayor seguridad, se disminuye la necesidad de realizar paradas para recuperar el sistema en caso de una intrusión no deseada.
