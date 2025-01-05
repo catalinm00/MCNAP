@@ -1,0 +1,15 @@
+{
+  "name": "berkeley",
+  "version": "1.0.0",
+  "description": "Implementacion del algoritmo de berkeley usando zeromq",
+  "license": "ISC",
+  "author": "Catalin",
+  "type": "module",
+  "main": "coordinador.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "zeromq": "^6.2.0"
+  }
+}
