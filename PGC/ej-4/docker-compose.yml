@@ -1,0 +1,10 @@
+version: "3.3"
+services:
+  head:
+    image: iblanque/openmpi:latest
+    ports:
+      - "22022:22"
+  node-1:
+    image: iblanque/openmpi:latest
+  node-2:
+    image: iblanque/openmpi:latest
