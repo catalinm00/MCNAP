@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+ name: nfs-pv
+spec:
+ storageClassName: nfs-subdir
+ persistentVolumeReclaimPolicy: Recycle
+ capacity:
+   storage: 32Mi
+ accessModes:
+   - ReadWriteMany
+ nfs:
+   server: 10.1.30.64
+   path: "/mnt/nfs_share/"
+   readOnly: false 

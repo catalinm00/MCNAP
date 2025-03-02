@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ipfe
+  namespace: default
+spec:
+  containers:
+  - name: ipfe
+    image: "catalinm00/ipython:alumno"
+    command: ["/bin/bash"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ipwn-depl
+spec:
+ selector:
+  matchLabels:
+    app: ipwn
+ replicas: 2
+ template:
+  metadata:
+    labels:
+      app: ipwn 
+  spec:
+    containers:
+    - name: ipwn
+      image: "catalinm00/ipython:alumno"
+      command: [ /bin/sh ]
+      args: [-c,while true;do sleep 20;done]
+      volumeMounts:
+      - mountPath: /root/.ipython/profile_default/security/
+        name: vol
+    volumes:
+    - name: vol
+      configMap:
+        name: ipythonconf
+        items:
+        - key: ipcontroller-engine.json
+          path: ipcontroller-engine.json

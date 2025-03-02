@@ -1,0 +1,29 @@
+# Admin
+apiVersion: v1
+kind: Secret
+metadata:
+ name: admin-token-dev
+ namespace: development
+ annotations:
+  kubernetes.io/service-account.name: admin
+type: kubernetes.io/service-account-token
+---
+# Devel
+apiVersion: v1
+kind: Secret
+metadata:
+ name: devel-svcacc-token-nsdevel
+ namespace: development
+ annotations:
+  kubernetes.io/service-account.name: devel
+type: kubernetes.io/service-account-token
+---
+# Prod
+apiVersion: v1
+kind: Secret
+metadata:
+ name: prod-svcacc-token-nsdevel
+ namespace: development
+ annotations:
+  kubernetes.io/service-account.name: prod
+type: kubernetes.io/service-account-token

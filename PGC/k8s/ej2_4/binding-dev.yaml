@@ -1,0 +1,40 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-development
+subjects:
+  - kind: ServiceAccount
+    name: admin
+    namespace: development
+roleRef:
+  kind: ClusterRole
+  name: admin  # Usamos el ClusterRole `admin` aquí
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devel-development
+  namespace: development
+subjects:
+  - kind: ServiceAccount
+    name: devel
+    namespace: development
+roleRef:
+  kind: ClusterRole
+  name: edit  # Usamos el ClusterRole `edit` para devel en desarrollo
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prod-development
+  namespace: development
+subjects:
+  - kind: ServiceAccount
+    name: prod
+    namespace: development
+roleRef:
+  kind: ClusterRole
+  name: view  # Usamos el ClusterRole `view` para prod en desarrollo
+  apiGroup: rbac.authorization.k8s.io

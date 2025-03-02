@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+ name: apache-service
+spec:
+ selector:
+   app: apache
+ ports:
+ - protocol: TCP
+   port: 9377
+   targetPort: 80

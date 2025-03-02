@@ -1,0 +1,9 @@
+FROM ubuntu:22.04
+RUN apt-get update && \
+    apt install -y iputils-ping && \
+    apt install -y iproute2 && \
+    apt install -y python-pip && \
+    pip2 install ipython && \
+    pip2 install ipyparallel
+
+

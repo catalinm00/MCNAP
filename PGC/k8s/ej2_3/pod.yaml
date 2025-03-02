@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ipfe
+  namespace: default
+spec:
+  containers:
+  - name: ipfe
+    image: "catalinm00/ipython:alumno"
+    command: ["/usr/bin/tail"]
+    args: ["-f", "/dev/null"]
